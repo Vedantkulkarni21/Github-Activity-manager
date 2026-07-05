@@ -1,0 +1,43 @@
+:root {
+  /* --- Surface --- */
+  --bg: #0e1116;
+  --bg-raised: #151920;
+  --surface: #1a1f28;
+  --surface-hover: #202631;
+  --border: #262c38;
+  --border-strong: #333b4a;
+
+  /* --- Text --- */
+  --text-primary: #e8eaee;
+  --text-secondary: #9aa3b2;
+  --text-muted: #626b7a;
+
+  /* --- Signal colors (borrowed from git/CI status conventions) --- */
+  --signal-success: #3fb98a;
+  --signal-success-bg: rgba(63, 185, 138, 0.12);
+  --signal-fail: #e8556b;
+  --signal-fail-bg: rgba(232, 85, 107, 0.12);
+  --signal-pending: #e8a23d;
+  --signal-pending-bg: rgba(232, 162, 61, 0.12);
+  --signal-info: #6c7cf5;
+  --signal-info-bg: rgba(108, 124, 245, 0.12);
+
+  /* --- Type --- */
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* --- Layout --- */
+  --sidebar-width: 232px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
