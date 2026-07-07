@@ -34,9 +34,11 @@ async def github_login():
     }
     resp = RedirectResponse(f"https://github.com/login/oauth/authorize?{urlencode(params)}")
     # short-lived, httponly cookie used purely for CSRF protection on the callback
-    resp.set_cookie(OAUTH_STATE_COOKIE_NAME, state, httponly=True, secure=settings.is_production,
-                     samesite="lax", max_age=600)
-    return resp
+    # resp.set_cookie(OAUTH_STATE_COOKIE_NAME, state, httponly=True, secure=settings.is_production,
+    #                  samesite="lax", max_age=600)
+    # return resp
+    resp.set_cookie(OAUTH_STATE_COOKIE_NAME, state, httponly=True, secure=True,
+                 samesite="none", max_age=600)
 
 
 @router.get("/github/callback")
@@ -71,9 +73,13 @@ async def github_callback(request: Request, code: str, state: str, db: AsyncSess
     session_token = create_session_token(str(user.id))
     resp = RedirectResponse(f"{settings.FRONTEND_URL}/dashboard")
     resp.delete_cookie(OAUTH_STATE_COOKIE_NAME)
+    # resp.set_cookie(
+    #     SESSION_COOKIE_NAME, session_token, httponly=True, secure=settings.is_production,
+    #     samesite="lax", max_age=7 * 24 * 3600,
+    # )
     resp.set_cookie(
-        SESSION_COOKIE_NAME, session_token, httponly=True, secure=settings.is_production,
-        samesite="lax", max_age=7 * 24 * 3600,
+        SESSION_COOKIE_NAME, session_token, httponly=True, secure=True,
+        samesite="none", max_age=7 * 24 * 3600,
     )
     return resp
 
