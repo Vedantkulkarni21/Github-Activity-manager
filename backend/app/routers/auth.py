@@ -85,10 +85,23 @@ async def github_callback(request: Request, code: str, state: str, db: AsyncSess
     return resp
 
 
+# @router.post("/logout")
+# async def logout():
+#     resp = RedirectResponse(settings.FRONTEND_URL)
+#     resp.delete_cookie(SESSION_COOKIE_NAME)
+#     return resp
+
+from fastapi.responses import JSONResponse
+
 @router.post("/logout")
 async def logout():
-    resp = RedirectResponse(settings.FRONTEND_URL)
-    resp.delete_cookie(SESSION_COOKIE_NAME)
+    resp = JSONResponse({"message": "Logged out"})
+    resp.delete_cookie(
+        SESSION_COOKIE_NAME,
+        httponly=True,
+        secure=True,
+        samesite="none",
+    )
     return resp
 
 
