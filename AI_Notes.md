@@ -1,6 +1,6 @@
 ## AI Tools Used
 
-I used ChatGPT (GPT-5.5) and Claude throughout development. AI was used as an engineering assistant for implementation ideas, debugging, API usage, deployment, and code review. All code was reviewed, modified, and tested manually before being used.
+I used ChatGPT and Claude for development. I used these tools prominantly for implementing my ideas, suggesting the designs, debugging, API usage summarization, deployment assistance, and code review. All code was reviewed, modified, and tested manually before being used.
 
 ## Key Decisions I Made
 
