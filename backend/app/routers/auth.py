@@ -39,6 +39,7 @@ async def github_login():
     # return resp
     resp.set_cookie(OAUTH_STATE_COOKIE_NAME, state, httponly=True, secure=True,
                  samesite="none", max_age=600)
+    return resp
 
 
 @router.get("/github/callback")
